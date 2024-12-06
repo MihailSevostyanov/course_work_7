@@ -17,14 +17,22 @@ class Habit(models.Model):
         verbose_name="Создатель привычки",
         **NULLABLE,
     )
-    place = models.CharField(max_length=200, verbose_name="Место, в котором необходимо выполнять привычку")
-    time = models.DateTimeField(verbose_name="Время, когда необходимо выполнять привычку")
-    action = models.CharField(max_length=200, verbose_name="Действие, которое представляет собой привычка")
+    place = models.CharField(
+        max_length=200, verbose_name="Место, в котором необходимо выполнять привычку"
+    )
+    time = models.DateTimeField(
+        verbose_name="Время, когда необходимо выполнять привычку"
+    )
+    action = models.CharField(
+        max_length=200, verbose_name="Действие, которое представляет собой привычка"
+    )
     is_pleasant = models.BooleanField(verbose_name="Признак приятной привычки")
     related_habit = models.ForeignKey(
         "self", on_delete=models.SET_NULL, **NULLABLE, verbose_name="Связанная привычка"
     )
-    frequency_number = models.PositiveIntegerField(verbose_name="Периодичность выполнения привычки для напоминания")
+    frequency_number = models.PositiveIntegerField(
+        verbose_name="Периодичность выполнения привычки для напоминания"
+    )
     frequency_unit = models.CharField(
         max_length=10,
         choices=FREQUENCY_UNITS,
@@ -33,7 +41,8 @@ class Habit(models.Model):
     )
     reward = models.CharField(max_length=200, verbose_name="Вознаграждение", **NULLABLE)
     duration = models.DurationField(
-        verbose_name="Время, которое предположительно потратит пользователь на выполнение привычки")
+        verbose_name="Время, которое предположительно потратит пользователь на выполнение привычки"
+    )
     is_public = models.BooleanField(default=True, verbose_name="Признак публичности")
 
     def __str__(self):

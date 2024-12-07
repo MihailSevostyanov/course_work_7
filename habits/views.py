@@ -1,3 +1,5 @@
+from django.utils.decorators import method_decorator
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
@@ -8,6 +10,9 @@ from habits.serializers import HabitSerializer
 from users.permissions import IsOwner
 
 
+@method_decorator(
+    name="list", decorator=swagger_auto_schema(operation_description="Привычки")
+)
 class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated, IsOwner]
@@ -20,6 +25,7 @@ class HabitViewSet(viewsets.ModelViewSet):
         new_habit = serializer.save()
         new_habit.user = self.request.user
         new_habit.save()
+
 
 class PublicHabitListAPIView(generics.ListAPIView):
     serializer_class = HabitSerializer

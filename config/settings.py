@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
@@ -79,7 +79,7 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.getenv("NAME"),
         "PASSWORD": os.getenv("PASSWORD"),
         "USER": os.getenv("USER_DB"),

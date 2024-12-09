@@ -7,7 +7,6 @@ class RewardValidator:
     """
     Исключает одновременный выбор связанной привычки и указания вознаграждения
     """
-
     def __init__(self, field1, field2):
         self.field1 = field1
         self.field2 = field2
@@ -25,7 +24,6 @@ class RelatedHabitValidator:
     """
     Проверяет что связанные привычки могут только приятными
     """
-
     def __init__(self, field):
         self.field = field
 
@@ -42,7 +40,6 @@ class DurationTimeValidator:
     """
     Проверяет что время выполнения не больше 120 секунд
     """
-
     def __init__(self, field):
         self.field = field
 
@@ -57,7 +54,6 @@ class PleasantHabitValidator:
     """
     Проверяет что у приятной привычки не может быть вознаграждения или связанной привычки
     """
-
     def __init__(self, field):
         self.field = field
 
@@ -66,8 +62,8 @@ class PleasantHabitValidator:
         if tmp_val:
             our_value = dict(value)
             if (
-                our_value.get("reward") is not None
-                or our_value.get("related_habit") is not None
+                    our_value.get("reward") is not None
+                    or our_value.get("related_habit") is not None
             ):
                 raise ValidationError(
                     "У приятной привычки не может быть вознаграждения или связанной привычки"
@@ -78,7 +74,6 @@ class RegularityValidator:
     """
     Проверяет что нельзя выполнять привычку реже, чем 1 раз в 7 дней
     """
-
     def __init__(self, field1, field2):
         self.field1 = field1
         self.field2 = field2
@@ -91,7 +86,7 @@ class RegularityValidator:
         if num:
             if unit == "minutes":
                 frequency_in_days = num / (
-                    60 * 24
+                        60 * 24
                 )  # перевод в дни (если указаны минуты)
             elif unit == "hours":
                 frequency_in_days = num / 24  # перевод в дни (если указаны часы)

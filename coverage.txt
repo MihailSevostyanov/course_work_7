@@ -16,7 +16,7 @@ habits/models.py                           21      1    95%
 habits/pagination.py                        5      0   100%
 habits/serializers.py                       8      0   100%
 habits/services.py                         13     13     0%
-habits/tasks.py                             3      3     0%
+habits/tasks.py                            21     21     0%
 habits/tests.py                            41      0   100%
 habits/urls.py                              8      0   100%
 habits/validators.py                       53     10    81%
@@ -37,4 +37,4 @@ users/tests.py                              1      0   100%
 users/urls.py                              10      0   100%
 users/views.py                             12      3    75%
 -----------------------------------------------------------
-TOTAL                                     347     51    85%
+TOTAL                                     365     69    81%
